@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-backend
+spec:
+  selector:
+    matchLabels:
+      app: sample-backend
+  template:
+    metadata:
+      labels:
+        app: sample-backend
+    spec:
+      containers:
+      - name: sample-backend
+        image: ghcr.io/mattuu0-test-env/k8s-sample-app/app:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sample-app-ingress
+  labels:
+    app.kubernetes.io/name: sample-app-ingress
+spec:
+  rules:
+  - host: sample-k8s.mattuu.com
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/ui"
+          backend:
+            service:
+              name: sample-frontend
+              port: 
+                number: 80
+        - pathType: Prefix
+          path: "/app"
+          backend:
+            service:
+              name: sample-backend
+              port: 
+                number: 80
