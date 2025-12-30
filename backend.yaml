@@ -20,3 +20,9 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 8080
+        env:
+          - name: DATABASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: sample-app-secret
+                key: DATABASE_URL
