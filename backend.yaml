@@ -12,6 +12,18 @@ spec:
       labels:
         app: sample-backend
     spec:
+      initContainers:
+      - name: write-hostname
+        image: busybox:latest
+        command: ['sh', '-c', 'echo $NODE_NAME > /var/www/hostname']
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        - name: hostname-volume
+          mountPath: /var/www
       containers:
       - name: sample-backend
         image: ghcr.io/mattuu0-test-env/k8s-sample-app/app-hostname:latest
@@ -28,13 +40,8 @@ spec:
                 name: sample-app-secret
                 key: DATABASE_URL
         volumeMounts:
-        - name: nodeinfo
-          mountPath: /var/www/hostname
-          subPath: hostname
+        - name: hostname-volume
+          mountPath: /var/www
       volumes:
-      - name: nodeinfo
-        downwardAPI:
-          items:
-          - path: "hostname"
-            fieldRef:
-              fieldPath: spec.nodeName
+      - name: hostname-volume
+        emptyDir: {}
