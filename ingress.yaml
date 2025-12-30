@@ -13,13 +13,13 @@ spec:
           pathType: ImplementationSpecific
           backend:
             service:
-              name: sample-frontend
+              name: sample-frontend-service
               port: 
                 number: 80
         - path: "/app(/|$)(.*)"
           pathType: ImplementationSpecific
           backend:
             service:
-              name: sample-backend
+              name: sample-backend-service
               port: 
                 number: 80
