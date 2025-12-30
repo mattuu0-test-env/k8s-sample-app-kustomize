@@ -20,10 +20,21 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8080
+          - containerPort: 8080
+        volumeMounts:
+        - name: nodeinfo
+          mountPath: /var/www/hostname
+          subPath: hostname
         env:
           - name: DATABASE_URI
             valueFrom:
               secretKeyRef:
                 name: sample-app-secret
                 key: DATABASE_URL
+      volumes:
+        - name: nodeinfo
+          downwardAPI:
+            items:
+            - path: "hostname"
+              fieldRef:
+                fieldPath: spec.nodeName
