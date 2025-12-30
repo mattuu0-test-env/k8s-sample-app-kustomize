@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sample-backend
-        image: ghcr.io/mattuu0-test-env/k8s-sample-app/app:latest
+        image: ghcr.io/mattuu0-test-env/k8s-sample-app/app-hostname:latest
         resources:
           limits:
             memory: "128Mi"
