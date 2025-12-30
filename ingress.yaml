@@ -9,15 +9,15 @@ spec:
   - host: sample-k8s.mattuu.com
     http:
       paths:
-        - pathType: Prefix
-          path: "/ui"
+        - path: "/ui(/|$)(.*)"
+          pathType: ImplementationSpecific
           backend:
             service:
               name: sample-frontend
               port: 
                 number: 80
-        - pathType: Prefix
-          path: "/app"
+        - path: "/app(/|$)(.*)"
+          pathType: ImplementationSpecific
           backend:
             service:
               name: sample-backend
