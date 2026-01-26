@@ -6,5 +6,4 @@ resources:
   - ./frontend.yaml
   - ./backend-service.yaml
   - ./frontend-service.yaml
-  - ./traefik-middleware.yaml
   - ./ingress.yaml

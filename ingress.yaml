@@ -9,6 +9,11 @@ spec:
   rules:
   - host: sample-k8s-hostname.mattuu.com
     http:
+      middlewares:
+        ui-stripprefix:
+          stripPrefix:
+            prefixes:
+              - "/ui"
       paths:
         - path: /ui
           pathType: Prefix
@@ -24,5 +29,3 @@ spec:
               name: sample-backend-service
               port: 
                 number: 80
-          middlewares:
-            - name: sample-app-stripprefix
