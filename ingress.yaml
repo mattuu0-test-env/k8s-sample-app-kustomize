@@ -24,3 +24,5 @@ spec:
               name: sample-backend-service
               port: 
                 number: 80
+          middlewares:
+            - name: sample-app-stripprefix
