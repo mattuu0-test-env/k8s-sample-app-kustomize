@@ -1,0 +1,22 @@
+# ingressroute.yaml
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sample-app-ingressroute
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`sample-k8s-hostname.mattuu.com`) && PathPrefix(`/ui`)
+      kind: Rule
+      services:
+        - name: sample-frontend-service
+          port: 80
+    - match: Host(`sample-k8s-hostname.mattuu.com`) && PathPrefix(`/app`)
+      kind: Rule
+      middlewares:
+        - name: app-stripprefix
+      services:
+        - name: sample-backend-service
+          port: 80
