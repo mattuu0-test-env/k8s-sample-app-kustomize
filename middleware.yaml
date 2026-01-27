@@ -6,4 +6,3 @@ spec:
   stripPrefix:
     prefixes:
       - "/app"
-      - "/ui"

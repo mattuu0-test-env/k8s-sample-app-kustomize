@@ -10,8 +10,6 @@ spec:
   routes:
     - match: Host(`sample-k8s-fast-taint.mattuu.com`) && PathPrefix(`/ui`)
       kind: Rule
-      middlewares:
-        - name: app-stripprefix
       services:
         - name: sample-frontend-service
           port: 80
