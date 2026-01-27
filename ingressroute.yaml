@@ -8,12 +8,12 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`sample-k8s-hostname.mattuu.com`) && PathPrefix(`/ui`)
+    - match: Host(`sample-k8s-fast-taint.mattuu.com`) && PathPrefix(`/ui`)
       kind: Rule
       services:
         - name: sample-frontend-service
           port: 80
-    - match: Host(`sample-k8s-hostname.mattuu.com`) && PathPrefix(`/app`)
+    - match: Host(`sample-k8s-fast-taint.mattuu.com`) && PathPrefix(`/app`)
       kind: Rule
       middlewares:
         - name: app-stripprefix
